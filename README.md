@@ -1,23 +1,25 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# frontend-tienda-online-v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App tienda online con React + TypeScript.
 
-Currently, two official plugins are available:
+## Stack y configuración base
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Esta plantilla proporciona una configuración mínima para trabajar con React en Vite con HMR y reglas de ESLint.
+
+Plugins oficiales disponibles:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) usa [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) usa [SWC](https://swc.rs/)
 
 ## React Compiler
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+El React Compiler está habilitado en esta plantilla. Consulta [esta documentación](https://react.dev/learn/react-compiler) para más información.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+Nota: esto impactará en el rendimiento de desarrollo (`dev`) y compilación (`build`) de Vite. También puedes probar [el soporte nativo experimental de React Compiler en plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) usando `compiler: true` en las opciones del plugin en lugar del plugin de Babel.
 
-## Expanding the ESLint configuration
+## Ampliar la configuración de ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Si estás desarrollando una aplicación en producción, se recomienda actualizar la configuración para habilitar reglas de lint con información de tipos:
 
 ```js
 export default defineConfig([
@@ -25,59 +27,23 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
+      // Otras configuraciones...
 
-      // Remove tseslint.configs.recommended and replace with this
+      // Quita tseslint.configs.recommended y reemplázalo por esto
       tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
+      // O usa esto para reglas más estrictas
       tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
+      // Opcionalmente, agrega esto para reglas de estilo
       tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
+      // Otras configuraciones...
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
+      // otras opciones...
     },
   },
 ])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-=======
-# frontend-tienda-online-v2
-App tienda online con React + TypeScript
->>>>>>> 8d6433665a27401f3b9ea78db4100ba00f317f54
