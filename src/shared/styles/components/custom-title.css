@@ -1,0 +1,39 @@
+.shop-header,
+.admin-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.shop__title,
+.admin__title {
+  color: var(--text-title); /* --color-midnight-blue */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.shop__subtitle,
+.admin__subtitle {
+  color: var(--text-main); /* --color-graphite */
+}
+
+/* Estilos propios de la Tienda */
+.shop-header {
+  margin-bottom: 1.75rem;
+}
+
+.shop__title {
+  font-size: 1.85rem;
+}
+
+/* Estilos propios del Admin */
+.admin-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin__title {
+  font-size: 1.45rem;
+  color: var(--color-sapphire);
+}

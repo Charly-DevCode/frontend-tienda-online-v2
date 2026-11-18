@@ -1,0 +1,85 @@
+:root {
+  /* 🎨 Base Palette */
+  --color-white: #FFFFFF;      /* Blanco puro para tarjetas y contraste */
+  --color-porcelain: #F9F5EB;  /* Fondo principal cálido */
+  --color-bone-white: #E8E5E0; /* Neutro unificado (bordes y botones neutros) */
+  --color-warm-beige: #E8DDCC; /* Neutro cálido secundario (navbar y hovers) */
+  --color-honey-champagne: #EDD296;
+  --color-steel-blue: #A8C4EC;
+  --color-sea: #3E8FD6;
+  --color-sapphire: #1E5A9C;
+  --color-midnight-blue: #2C2153; 
+  --color-terracotta: #D94445;   
+  --color-terracotta-dark: #B83233;   
+  --color-graphite: #383E42;    
+
+  /* 🔔 Notifications & States */
+  --color-success: #6B8E73;
+  --color-warning: #C4925C;
+  --color-error: #B36666;
+  --color-info: #708A9E;
+
+  --color-border: var(--color-bone-white);
+
+  /* 🧩 Semantic Tokens */
+  --bg-main: var(--color-porcelain);
+  --bg-card: var(--color-white);
+
+  --text-main: var(--color-graphite);
+  --text-title: var(--color-midnight-blue);
+  --text-link: var(--color-sea);
+
+  /* Botones */
+  --btn-primary-bg: var(--color-terracotta);
+  --btn-primary-text: var(--color-white);
+  --btn-primary-border: var(--color-terracotta);
+  --btn-primary-bg-hover: var(--color-terracotta-dark);  
+
+  --btn-secondary-bg: var(--color-sapphire);
+  --btn-secondary-text: var(--color-white);
+  --btn-secondary-border: var(--color-sapphire);
+  --btn-secondary-bg-hover: var(--color-sea);  
+
+  /* Cancelar y volver */
+  --btn-cancel-bg: var(--color-bone-white);
+  --btn-cancel-text: var(--color-graphite);
+  --btn-cancel-border: var(--color-bone-white);
+  --btn-cancel-bg-hover: var(--color-warm-beige); 
+
+  /* Filtros y acciones neutras */
+  --btn-neutral-bg: var(--color-white);
+  --btn-neutral-text: var(--color-midnight-blue);
+  --btn-neutral-border: var(--color-bone-white);
+  --btn-neutral-bg-hover: var(--color-porcelain);  
+
+  --card-bg: var(--color-white);
+  --card-text: var(--color-graphite);
+  --card-border: var(--color-honey-champagne);
+
+  --navbar-bg: var(--color-warm-beige);
+  --navbar-text: var(--color-midnight-blue);
+  --navbar-border: var(--color-midnight-blue);  
+
+  /* Barra de anuncios */
+  --announcement-bar-bg: var(--color-sapphire);
+  --announcement-bar-text: var(--color-porcelain);
+
+  /* Menús verticales */
+  --sidebar-bg: var(--color-white);
+  --sidebar-text: var(--color-graphite);
+  --sidebar-active: var(--color-midnight-blue);
+
+  --footer-bg: var(--color-sapphire);
+  --footer-text: var(--color-porcelain);   
+  
+  /* 🍞 Toast Tokens (No invasivos) */
+  --toast-bg: var(--color-white);
+  --toast-text: var(--color-graphite);
+  --toast-title: var(--color-midnight-blue);
+  --toast-border: var(--color-bone-white);
+
+  --toast-success-accent: var(--color-success);
+  --toast-warning-accent: var(--color-warning);
+  --toast-error-accent: var(--color-error);
+  --toast-info-accent: var(--color-info);
+}

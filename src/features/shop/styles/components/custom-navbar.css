@@ -1,0 +1,121 @@
+.navbar {
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  border-bottom: 1px solid var(--navbar-border);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  width: 100%;
+}
+
+.navbar__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Buscador */
+.navbar__search {
+  flex: 1;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-porcelain);
+  border: 1px solid var(--navbar-border); 
+  border-radius: 10px;
+  padding: 0.25rem 0.35rem 0.25rem 1.1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar__search:focus-within {
+  background-color: var(--color-white);
+  border-color: var(--color-sapphire);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+.navbar__search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--navbar-text);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.navbar__search-input::placeholder {
+  color: var(--navbar-text);
+  opacity: 0.6;
+}
+
+.navbar__search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border: none;
+  border-radius: 7px;
+  background-color: var(--color-midnight-blue);
+  color: var(--color-porcelain);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.navbar__search-btn:hover {
+  background-color: var(--color-sapphire);
+}
+
+.navbar__search-btn:active {
+  transform: scale(0.96);
+}
+
+/* Acciones (Carrito + Auth) */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar__cart-btn {
+  position: relative;
+}
+
+.navbar__cart-badge {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.45rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background-color: var(--color-terracotta);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar__container {
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .navbar__search {
+    order: 3;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .navbar__auth-btn span {
+    display: none;
+  }
+}

@@ -1,0 +1,5 @@
+/* 1. Reset y variables base */
+@import '@/shared/styles/base/reset.css';
+
+/* 2. Componentes globales */
+@import '@/shared/styles/ui/button.css';

@@ -1,0 +1,45 @@
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-links__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.social-links__item:hover {
+  transform: translateY(-2px);
+}
+
+/* Variante LIGHT: para fondos oscuros como el Footer (--color-sapphire) */
+.social-links--light .social-links__item {
+  color: var(--color-porcelain);
+  border: 1px solid rgba(249, 245, 235, 0.25);
+}
+
+.social-links--light .social-links__item:hover {
+  background-color: var(--color-honey-champagne);
+  border-color: var(--color-honey-champagne);
+  color: var(--color-midnight-blue);
+}
+
+/* Variante DARK: para fondos claros como Contacto o Sobre Nosotros (--bg-main) */
+.social-links--dark .social-links__item {
+  color: var(--color-midnight-blue);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+}
+
+.social-links--dark .social-links__item:hover {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  color: var(--color-white);
+}

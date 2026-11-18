@@ -1,0 +1,45 @@
+.custom-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  /* text-decoration: none; */
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.custom-logo:hover {
+  opacity: 0.88;
+}
+
+.custom-logo__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-midnight-blue);
+}
+
+.custom-logo__divider {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--color-terracotta); /* Toque cálido que une el nombre con la categoría */
+}
+
+.custom-logo__subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-sapphire);
+}
+
+/* Variante clara para usar en el Footer (--footer-bg: sapphire) */
+.custom-logo--light .custom-logo__title {
+  color: var(--color-white);
+}
+
+.custom-logo--light .custom-logo__divider {
+  color: var(--color-honey-champagne);
+}
+
+.custom-logo--light .custom-logo__subtitle {
+  color: var(--color-porcelain);
+}
