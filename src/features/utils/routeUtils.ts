@@ -1,3 +1,5 @@
+import { rolePermissions } from '@/features/config/routePermission';
+
 import {
   faRightToBracket,
   faUser,
@@ -5,11 +7,11 @@ import {
   faUserPlus,
   faHouse,
   faBookmark,
-  faCartShopping,
-  faCreditCard,
+  faCartShopping,  
   faRightFromBracket,
   faGauge,  
   faFileLines,
+  faEye,
   faReceipt,
   faTags,
   faChartBar,  
@@ -23,9 +25,8 @@ import {
 export const AppRoutes = {
   // 1. Tienda Pública y Portal del Cliente (ShopLayout)
   INDEX: { key: 'INDEX', path: '/', name: 'Index', icon: faHouse },
-  ARTICLE_DETAIL: { key: 'ARTICLE_DETAIL', path: '/article-detail', name: 'ArticleDetail', icon: faBookmark },
-  CART: { key: 'CART', path: '/cart', name: 'Cart', icon: faCartShopping },
-  PAYMENT: { key: 'PAYMENT', path: '/payment', name: 'Payment', icon: faCreditCard },
+  ARTICLE_DETAIL: { key: 'ARTICLE_DETAIL', path: '/article-detail', name: 'ArticleDetail', icon: faEye },
+  CART: { key: 'CART', path: '/cart', name: 'Cart', icon: faCartShopping },  
   ACCOUNT: { key: 'ACCOUNT', path: '/account', name: 'Account', icon: faUser },
 
   // 2. Autenticación (AuthLayout)
@@ -46,11 +47,11 @@ export const AppRoutes = {
 export type AppRouteKeys = keyof typeof AppRoutes;
 
 export const getRoutePath = (route: AppRouteKeys): string => AppRoutes[route].path;
-export const getRouteName = (route: AppRouteKeys): string => AppRoutes[route].name;
+/* export const getRouteName = (route: AppRouteKeys): string => AppRoutes[route].name;
 export const getRouteFromPath = (path: string): AppRouteKeys | undefined => {
   const entry = Object.entries(AppRoutes).find(([_, info]) => info.path === path);
   return entry ? (entry[0] as AppRouteKeys) : undefined;
-};
+}; */
 
 export type RouteInfoType = (typeof AppRoutes)[AppRouteKeys];
 
@@ -63,6 +64,11 @@ export function normalizeUserRole(role: string | undefined): RoleUser | undefine
 
   return undefined;
 }
+
+const keyRoutes = (route: AppRouteKeys) => AppRoutes[route];
+
+export const getPermissionsByRole = (role: RoleUser | undefined) =>
+  role ? rolePermissions[role].map(keyRoutes) : [];
 
 export const getDefaultRouteByRole = (role: RoleUser): string => {
   return role === 'client' ? getRoutePath('ACCOUNT') : getRoutePath('DASHBOARD');

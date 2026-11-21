@@ -9,17 +9,23 @@ import {
   faRightToBracket,
   faUserPlus,
   faMagnifyingGlass,
-  faCartShopping
-  //faXmark // Opcional: botón "X" para limpiar la búsqueda
-  //faUser // Alternativa clásica para Login o Mi Cuenta
+  faCartShopping,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import '@/features/shop/styles/components/custom-navbar.css';
-
+import { useAuthStore } from "@/features/auth/store/auth.store";
+import { useCartStore } from "@/features/shop/store/cartStore";
 
 
 export const CustomNavbar = () => {
   const [, setSearchParams] = useSearchParams();
+
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
+
+  const cartCounter = useCartStore((s) => s.getTotalItems());
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
@@ -27,7 +33,7 @@ export const CustomNavbar = () => {
   const handleSubmit = () => {
     const query = inputRef.current?.value;
     handleSearch(query);
-  } 
+  }
 
   const handleKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>
@@ -58,25 +64,25 @@ export const CustomNavbar = () => {
   return (
     <nav className="navbar" aria-label="Navegación principal">
       <div className="navbar__container">
-        <CustomLogo />        
+        <CustomLogo />
         <div className="navbar__search" role="search">
           <input
             type="search"
             placeholder="Buscar tecnología, herramientas..."
             aria-label="Buscar productos"
             className="navbar__search-input"
-            ref={ inputRef }
+            ref={inputRef}
             onKeyDown={handleKeyPress}
-          />          
+          />
           <button
             type="button"
             aria-label="Buscar"
             className="navbar__search-btn"
-            onClick={ handleSubmit }
+            onClick={handleSubmit}
           >
-            <FontAwesomeIcon icon={ faMagnifyingGlass } />
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
-        </div>        
+        </div>
         <div className="navbar__actions">
           <Button
             variant="outline"
@@ -84,27 +90,44 @@ export const CustomNavbar = () => {
             className="navbar__cart-btn"
             aria-label="Carrito de compras"
           >
-            <FontAwesomeIcon icon={ faCartShopping } />
-            <span className="navbar__cart-badge">0</span>
-          </Button>
+            <FontAwesomeIcon icon={faCartShopping} />
+            <span className="navbar__cart-badge">
+              { cartCounter }
+            </span>
+          </Button>          
 
-          <Button
-            variant="outline"
-            onClick={() => navigate('/auth/register')}
-            className="navbar__auth-btn"
-          >
-            <FontAwesomeIcon icon={ faUserPlus } />
-            <span>Registrarse</span>
-          </Button>
+          {
+            user ? (
+              <Button
+                variant="outline"
+                onClick={logout}
+                className="navbar__auth-btn"
+              >
+                <FontAwesomeIcon icon={faXmark} />
+                <span>Cerrar sesión</span>
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/auth/register')}
+                  className="navbar__auth-btn"
+                >
+                  <FontAwesomeIcon icon={faUserPlus} />
+                  <span>Registrarse</span>
+                </Button>
 
-          <Button
-            variant="outline"
-            onClick={() => navigate('/auth/login')}
-            className="navbar__auth-btn"
-          >
-            <FontAwesomeIcon icon={ faRightToBracket } />
-            <span>Ingresar</span>
-          </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/auth/login')}
+                  className="navbar__auth-btn"
+                >
+                  <FontAwesomeIcon icon={faRightToBracket} />
+                  <span>Ingresar</span>
+                </Button>
+              </>
+            )
+          }
         </div>
       </div>
     </nav>

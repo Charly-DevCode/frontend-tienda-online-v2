@@ -36,9 +36,9 @@ export const HomePage = () => {
 
   const { data, isError, isLoading } = usePaginatedArticles(queryParams);
 
-  if (isError) return <p>Hubo un error al cargar los artículos.</p>;
+   if (isLoading) return <p>Cargando catálogo...</p>;
 
-  if (isLoading) return <p>Cargando catálogo...</p>;
+  if (isError) return <p>Hubo un error al cargar los artículos.</p>; 
 
   return (
     <div className="home-page">

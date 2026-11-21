@@ -1,7 +1,16 @@
-import type { IItemBase } from "@/shared/interfaces/item.base.dto";
+import type { IItemBase } from "@/features/interfaces/item.base.dto";
 import type { ICardStripe } from "@/features/shop/interfaces/payments.dto";
 import type { IItemPublic } from "@/features/shop/interfaces/items.dto";
-import type { InvoiceStatus } from "@/shared/types/invoice.status.type";
+
+
+const Status = [
+  'pending',      // Pendiente de pago
+  'paid',         // Pagada
+  'voided',       // Anulada y/o
+  'refunded'      // Reembolsada
+] as const
+
+export type InvoiceStatus = keyof typeof Status;
 
 interface IInvoiceBase {
   items: IItemBase[];
