@@ -25,21 +25,21 @@ export const AnnouncementBar = ({
   items 
 }: AnnouncementBarProps) => {
   return (
-    <nav className="announcement-bar">
-      <span className="announcement-bar__title">        
+    <nav className='announcement-bar'>
+      <span className='announcement-bar__title'>        
         <FontAwesomeIcon 
           icon={faBolt} 
-          className="announcement-bar__icon announcement-bar__icon--accent" 
+          className='announcement-bar__icon announcement-bar__icon--accent' 
         />
         {title}
       </span>
       
       {items.map((item) => (
-        <Link key={item.id} to={item.to} className="announcement-bar__link">
+        <Link key={item.id} to={item.to} className='announcement-bar__link'>
           {item.icon && (
             <FontAwesomeIcon 
               icon={item.icon} 
-              className="announcement-bar__icon" 
+              className='announcement-bar__icon' 
             />
           )}
           {item.text}

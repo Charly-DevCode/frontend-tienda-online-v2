@@ -7,14 +7,17 @@ import {
   faUserPlus,
   faHouse,
   faBookmark,
-  faCartShopping,  
+  faCartShopping, 
+  faBagShopping, 
   faRightFromBracket,
   faGauge,  
   faFileLines,
   faEye,
   faReceipt,
   faTags,
-  faChartBar,  
+  faChartBar,
+  faCircleQuestion,
+  faGear  
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -23,18 +26,23 @@ import {
 } from '@/features/interfaces/user.base.dto';
 
 export const AppRoutes = {
-  // 1. Tienda Pública y Portal del Cliente (ShopLayout)
+  // 1. Tienda Pública (ShopLayout)
   INDEX: { key: 'INDEX', path: '/', name: 'Index', icon: faHouse },
-  ARTICLE_DETAIL: { key: 'ARTICLE_DETAIL', path: '/article-detail', name: 'ArticleDetail', icon: faEye },
+  ARTICLE_DETAIL: { key: 'ARTICLE_DETAIL', path: '/articles/:idSlug', name: 'ArticleDetail', icon: faEye },
   CART: { key: 'CART', path: '/cart', name: 'Cart', icon: faCartShopping },  
+  
+  // 2. Portal del Cliente (AccountLayout)
   ACCOUNT: { key: 'ACCOUNT', path: '/account', name: 'Account', icon: faUser },
+  SHOPPING: { key: 'SHOPPING', path: '/shopping', name: 'Shopping', icon: faBagShopping },
+  HELP: { key: 'HELP', path: '/help', name: 'Help', icon: faCircleQuestion },
+  SETTINGS: { key: 'SETTINGS', path: '/settings', name: 'Settings', icon: faGear },
 
-  // 2. Autenticación (AuthLayout)
+  // 3. Autenticación (AuthLayout)
   LOGIN: { key: 'LOGIN', path: '/auth/login', name: 'Login', icon: faRightToBracket },
   REGISTER: { key: 'REGISTER', path: '/auth/register', name: 'Register', icon: faUserPlus },
   LOGOUT: { key: 'LOGOUT', path: '/auth/logout', name: 'Logout', icon: faRightFromBracket },
 
-  // 3. Panel Administrativo - Staff (AdminLayout bajo /admin)
+  // 4. Panel Administrativo - Staff (AdminLayout bajo /admin)
   DASHBOARD: { key: 'DASHBOARD', path: '/admin', name: 'Dashboard', icon: faGauge },
   USERS: { key: 'USERS', path: '/admin/users', name: 'Users', icon: faUsers },
   ARTICLES: { key: 'ARTICLES', path: '/admin/articles', name: 'Articles', icon: faFileLines },
@@ -71,5 +79,7 @@ export const getPermissionsByRole = (role: RoleUser | undefined) =>
   role ? rolePermissions[role].map(keyRoutes) : [];
 
 export const getDefaultRouteByRole = (role: RoleUser): string => {
-  return role === 'client' ? getRoutePath('ACCOUNT') : getRoutePath('DASHBOARD');
+  return role === 'client' 
+    ? getRoutePath('ACCOUNT') 
+    : getRoutePath('DASHBOARD');
 };

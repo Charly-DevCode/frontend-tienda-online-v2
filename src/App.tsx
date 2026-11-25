@@ -1,9 +1,9 @@
 import { RouterProvider } from 'react-router';
-import type { PropsWithChildren } from 'react';
-import { 
-  QueryClient, 
-  QueryClientProvider, 
-  useQuery 
+import { Suspense, type PropsWithChildren } from 'react';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -23,7 +23,7 @@ const CheckAuthProvider = ({ children }: PropsWithChildren) => {
     refetchOnWindowFocus: true,
   });
 
-  if ( isLoading ) return <h1>'loading...'</h1>;
+  if (isLoading) return <h1>loading...</h1>;
 
   return children;
 };
@@ -32,8 +32,10 @@ export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <CheckAuthProvider>
-        <RouterProvider router={appRouter} />
-      </CheckAuthProvider>      
+        <Suspense fallback={null}>
+          <RouterProvider router={appRouter} />
+        </Suspense>
+      </CheckAuthProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -1,21 +1,23 @@
-import { useRef } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { useRef } from 'react';
+import { useNavigate, useSearchParams } from 'react-router';
 
-import { Button } from "@/shared/components/ui/Button";
-import { CustomLogo } from "@/shared/components/CustomLogo";
+import { Button } from '@/shared/components/ui/Button';
+import { CustomLogo } from '@/shared/components/CustomLogo';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faRightToBracket,
   faUserPlus,
+  faCircleUser,
+  faUserGear,
   faMagnifyingGlass,
   faCartShopping,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import '@/features/shop/styles/components/custom-navbar.css';
-import { useAuthStore } from "@/features/auth/store/auth.store";
-import { useCartStore } from "@/features/shop/store/cartStore";
+import { useAuthStore } from '@/features/auth/store/auth.store';
+import { useCartStore } from '@/features/shop/store/cartStore';
 
 
 export const CustomNavbar = () => {
@@ -46,7 +48,7 @@ export const CustomNavbar = () => {
   }
 
   const handleSearch = (query: string | undefined) => {
-    const trimmed = query?.trim() ?? "";
+    const trimmed = query?.trim() ?? '';
 
     setSearchParams((prev) => {
       const newParams = new URLSearchParams(prev);
@@ -62,65 +64,95 @@ export const CustomNavbar = () => {
   }
 
   return (
-    <nav className="navbar" aria-label="Navegación principal">
-      <div className="navbar__container">
+    <nav className='navbar' aria-label='Navegación principal'>
+      <div className='navbar__container'>
         <CustomLogo />
-        <div className="navbar__search" role="search">
+        <div className='navbar__search' role='search'>
           <input
-            type="search"
-            placeholder="Buscar tecnología, herramientas..."
-            aria-label="Buscar productos"
-            className="navbar__search-input"
+            type='search'
+            placeholder='Buscar tecnología, herramientas...'
+            aria-label='Buscar productos'
+            className='navbar__search-input'
             ref={inputRef}
             onKeyDown={handleKeyPress}
           />
           <button
-            type="button"
-            aria-label="Buscar"
-            className="navbar__search-btn"
+            type='button'
+            aria-label='Buscar'
+            className='navbar__search-btn'
             onClick={handleSubmit}
           >
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
-        <div className="navbar__actions">
+        <div className='navbar__actions'>
           <Button
-            variant="outline"
+            variant='outline'
+            size='sm'
             onClick={() => navigate('/cart')}
-            className="navbar__cart-btn"
-            aria-label="Carrito de compras"
+            className='navbar__cart-btn'
+            aria-label='Carrito de compras'
           >
             <FontAwesomeIcon icon={faCartShopping} />
-            <span className="navbar__cart-badge">
+            <span className='navbar__cart-badge'>
               { cartCounter }
             </span>
           </Button>          
 
           {
             user ? (
-              <Button
-                variant="outline"
-                onClick={logout}
-                className="navbar__auth-btn"
-              >
-                <FontAwesomeIcon icon={faXmark} />
-                <span>Cerrar sesión</span>
-              </Button>
+              <>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={logout}
+                  className='navbar__auth-btn'
+                >
+                  <FontAwesomeIcon icon={faXmark} />
+                  <span>Cerrar sesión</span>
+                </Button>
+
+                { 
+                  user?.role === 'client' ? (
+                    <Button
+                      variant='outline'
+                      size='sm'
+                      onClick={() => navigate('/account')}
+                      className='navbar__auth-btn'
+                    >
+                      <FontAwesomeIcon icon={faCircleUser} />
+                      <span>Cuenta</span>
+                    </Button>
+                  ): (
+                    <Button
+                      variant='outline'  
+                      size='sm'   
+                      onClick={() => navigate('/admin')}                 
+                      className='navbar__auth-btn'
+                    >
+                      <FontAwesomeIcon icon={faUserGear} />
+                      <span>Admin</span>
+                    </Button>
+                  )
+                }
+              </>
             ) : (
               <>
                 <Button
-                  variant="outline"
+                  variant='outline'
+                  size='sm'
                   onClick={() => navigate('/auth/register')}
-                  className="navbar__auth-btn"
+                  className='navbar__auth-btn'
                 >
                   <FontAwesomeIcon icon={faUserPlus} />
                   <span>Registrarse</span>
                 </Button>
 
                 <Button
-                  variant="outline"
+                  variant='outline'
+                  size='sm'
                   onClick={() => navigate('/auth/login')}
-                  className="navbar__auth-btn"
+                  className='navbar__auth-btn'
                 >
                   <FontAwesomeIcon icon={faRightToBracket} />
                   <span>Ingresar</span>

@@ -1,14 +1,16 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { IItemBase } from "@/features/interfaces/item.base.dto";
+import type { IItemCard } from "@/features/shop/interfaces/items.dto";
 
 interface CartState {
-  items: IItemBase[];
-  add: (item: IItemBase) => void;
+  items: IItemCard[];
+
+  add: (item: IItemCard) => void;
   remove: (articleId: number) => void;
   removeAll: () => void;
   getTotalItems: () => number;
   getTotalUnits: () => number;
+  getTotal: () => number;
 }
 
 export const useCartStore = create<CartState>()(
@@ -57,6 +59,12 @@ export const useCartStore = create<CartState>()(
 
       getTotalUnits: () =>
         get().items.reduce((acc, item) => acc + (item.units ?? 1), 0),
+
+      getTotal: () =>
+        get().items.reduce(
+          (total, item) => total + (item.units ?? 1) * (Number(item.price ?? 0)),
+          0
+        ),
     }),
     {
       name: "itemsStorage", // clave en localStorage

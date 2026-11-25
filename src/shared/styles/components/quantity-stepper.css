@@ -1,0 +1,65 @@
+.qty-stepper {
+  display: inline-grid;
+  grid-template-columns: 2.25rem minmax(2.5rem, auto) 2.25rem;
+  align-items: center;
+  width: max-content;
+  background-color: var(--btn-neutral-bg);
+  border: 1px solid var(--btn-neutral-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-stepper__btn {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--btn-neutral-text);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.qty-stepper__btn:first-child {
+  border-right: 1px solid var(--btn-neutral-border);
+}
+
+.qty-stepper__btn:last-child {
+  border-left: 1px solid var(--btn-neutral-border);
+}
+
+.qty-stepper__btn:hover:not(:disabled) {
+  background-color: var(--color-warm-beige);
+  color: var(--color-midnight-blue);
+}
+
+.qty-stepper__btn:active:not(:disabled) {
+  background-color: var(--btn-cancel-bg);
+}
+
+.qty-stepper__btn:focus-visible {
+  outline: 2px solid var(--color-sea);
+  outline-offset: -2px;
+}
+
+.qty-stepper__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.qty-stepper__value {
+  padding: 0 0.65rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-title);
+  background-color: var(--bg-main);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}

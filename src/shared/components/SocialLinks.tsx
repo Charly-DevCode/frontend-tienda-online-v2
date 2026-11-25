@@ -23,10 +23,10 @@ export const SocialLinks = ({ variant = 'light' }: SocialLinksProps) => {
         <a
           key={name}
           href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+          target='_blank'
+          rel='noopener noreferrer'
           aria-label={name}
-          className="social-links__item"
+          className='social-links__item'
         >
           <FontAwesomeIcon icon={icon} />
         </a>

@@ -11,7 +11,7 @@ export const checkAuthAction = async (): Promise<IAuthResponse> => {
   if (!token) throw new Error('No token found');
 
   try {
-    const { data } = await api.post<IAuthResponse>('/auth/check-status');
+    const { data } = await api.get<IAuthResponse>('/auth/check-status');
 
     localStorage.setItem('token', data.token);
 

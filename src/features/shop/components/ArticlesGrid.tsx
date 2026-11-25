@@ -1,7 +1,7 @@
 import type { 
   IArticlePublic 
-} from "@/features/shop/interfaces/articles.dto"
-import { ArticleCard } from "./ArticleCard";
+} from '@/features/shop/interfaces/articles.dto'
+import { ArticleCard } from './ArticleCard';
 
 import '@/features/shop/styles/components/articles-grid.css';
 

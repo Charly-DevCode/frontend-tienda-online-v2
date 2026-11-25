@@ -1,15 +1,15 @@
-import { useSearchParams } from "react-router"
+import { useSearchParams } from 'react-router'
 
-import { usePaginatedArticles } from "@/features/shop/hooks/usePaginatedArticles";
+import { usePaginatedArticles } from '@/features/shop/hooks/usePaginatedArticles';
 
-import { ArticlesGrid } from "@/features/shop/components/ArticlesGrid";
-import { CustomPaginator } from "@/shared/components/CustomPaginator";
+import { ArticlesGrid } from '@/features/shop/components/ArticlesGrid';
+import { CustomPaginator } from '@/shared/components/CustomPaginator';
 
 import type { 
   IArticleQueryParams 
-} from "@/features/interfaces/article.query.params";
+} from '@/features/interfaces/article.query.params';
 
-import { parsePositiveInt } from "@/shared/utils/parsers";
+import { parsePositiveInt } from '@/shared/utils/parsers';
 
 
 export const HomePage = () => {   
@@ -41,7 +41,7 @@ export const HomePage = () => {
   if (isError) return <p>Hubo un error al cargar los artículos.</p>; 
 
   return (
-    <div className="home-page">
+    <div className='home-page'>
       <ArticlesGrid articles={ data?.articles ?? [] } />
 
       <CustomPaginator 

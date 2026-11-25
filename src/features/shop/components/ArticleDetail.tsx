@@ -1,8 +1,11 @@
 import { Button } from '@/shared/components/ui/Button';
+
 import type { IArticlePublic } from '@/features/shop/interfaces/articles.dto';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+
+import { currencyFormatter } from '@/shared/utils/currency-formatter';
+
 import '@/features/shop/styles/components/article-detail.css';
+import { QuantityStepper } from '@/shared/components/ui/QuantityStepper';
 
 interface ArticleDetailProps {
   article: IArticlePublic;
@@ -31,34 +34,16 @@ export const ArticleDetail = ({
       <div className='article-detail__info'>
         <h1 className='article-detail__title'>{article.title}</h1>
 
-        <div className='article-detail__price'>{article.price}</div>
+        <div className='article-detail__price'>{ currencyFormatter(article.price) }</div>
 
         <div className='article-detail__quantity'>
-          <Button
-            variant='secondary'
-            type='button'
-            size='sm'
-            aria-label='Disminuir cantidad'
-            className='article-detail__quantity-btn'
-            onClick={decrement}
-          >
-            <FontAwesomeIcon icon={faMinus} />
-          </Button>
-
-          <span className='article-detail__quantity-value' aria-live='polite'>
-            {counter}
-          </span>
-
-          <Button
-            variant='secondary'
-            type='button'
-            size='sm'
-            aria-label='Aumentar cantidad'
-            className='article-detail__quantity-btn'
-            onClick={increment}
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </Button>
+          <QuantityStepper 
+            value={counter}
+            onIncrement={increment}
+            onDecrement={decrement}
+            min={1}
+            max={article.stock}
+          />
         </div>
 
         <div className='article-detail__btn'>

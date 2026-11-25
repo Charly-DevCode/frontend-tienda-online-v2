@@ -1,8 +1,10 @@
-import { Link } from "react-router"
+import { Link } from 'react-router'
 
 import type { 
   IArticlePublic 
-} from "@/features/shop/interfaces/articles.dto"
+} from '@/features/shop/interfaces/articles.dto'
+
+import { currencyFormatter } from '@/shared/utils/currency-formatter';
 
 import '@/features/shop/styles/components/article-card.css';
 
@@ -32,7 +34,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
       </h4>
 
       <div className='article-card__price'>
-        ${article.price}
+        { currencyFormatter(article.price ?? 0) }
       </div>
     </div>
   )

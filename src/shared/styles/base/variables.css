@@ -67,6 +67,7 @@
   /* Menús verticales */
   --sidebar-bg: var(--color-white);
   --sidebar-text: var(--color-graphite);
+  --sidebar-borde: var(--color-warm-beige);
   --sidebar-active: var(--color-midnight-blue);
 
   --footer-bg: var(--color-sapphire);

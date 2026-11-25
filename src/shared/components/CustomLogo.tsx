@@ -6,7 +6,10 @@ interface Props {
   variant?: 'default' | 'light'; // 'default' para el navbar beige, 'light' para el footer zafiro
 }
 
-export const CustomLogo = ({ subtitle = 'Shop', variant = 'default' }: Props) => {
+export const CustomLogo = ({ 
+  subtitle = 'Shop', 
+  variant = 'default' 
+}: Props) => {
   return (
     <Link to='/' className={`custom-logo custom-logo--${variant}`}>
       <span className='custom-logo__title'>MegaStore</span>

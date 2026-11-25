@@ -1,17 +1,19 @@
-import { useParams } from "react-router";
+import { useParams } from 'react-router';
 
 import {
   useArticleBySlug
-} from "@/features/shop/hooks/useArticleBySlug";
+} from '@/features/shop/hooks/useArticleBySlug';
 import {
   useCounter
-} from "@/features/shop/hooks/useCounter";
-import { useCartStore } from "@/features/shop/store/cartStore";
+} from '@/features/shop/hooks/useCounter';
+import { useCartStore } from '@/features/shop/store/cartStore';
 
-import { ArticleDetail } from "@/features/shop/components/ArticleDetail";
+import { ArticleDetail } from '@/features/shop/components/ArticleDetail';
 
-import type { IItemBase } from "@/features/interfaces/item.base.dto";
-import { toItemBase } from "@/features/shop/interfaces/items.dto";
+//import type { IItemBase } from '@/features/interfaces/item.base.dto';
+import { 
+  toItemCard,
+  type IItemCard} from '@/features/shop/interfaces/items.dto';
 
 
 export const ArticleDetailPage = () => {
@@ -35,7 +37,7 @@ export const ArticleDetailPage = () => {
   if (isError || !article) return <p>No se pudo encontrar el artículo.</p>;  
 
   const handleAddCart = () => {
-    const item: IItemBase = toItemBase(article, counter);
+    const item: IItemCard = toItemCard(article, counter);
     add(item);
   }
 

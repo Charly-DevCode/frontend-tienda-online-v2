@@ -75,6 +75,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       return true;  
           
     } catch (error) {
+      //console.error('checkAuthStatus falló:', error);
       localStorage.removeItem('token');
 
       set({
